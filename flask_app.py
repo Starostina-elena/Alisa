@@ -31,8 +31,6 @@ def main():
 
     handle_dialog(request.json, response)
 
-    print(request.json['session']['user_id'])
-
     logging.info(f'Response:  {response!r}')
 
     return json.dumps(response)
@@ -44,7 +42,7 @@ def handle_dialog(req, res):
     if req['session']['new']:
         # Это новый пользователь.
 
-        animal[req['session'][user_id]] = 'слон'
+        animal[req['session']['user_id']] = 'слон'
 
         sessionStorage[user_id] = {
             'suggests': [
